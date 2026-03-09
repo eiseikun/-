@@ -211,8 +211,10 @@ font-size:10px;
 
 12:30  
 <a href="https://www.google.com/maps/dir/?api=1&destination=誕生寺" target="_blank">誕生寺</a><br>
-↓約30分<br>
-
+↓<br>
+自由昼食（鴨川周辺）<br>
+※お腹の空き具合で判断<br>
+↓<br>
 15:00  
 <a href="https://www.google.com/maps/dir/?api=1&destination=鴨川グランドホテル" target="_blank">宿泊ホテル</a>
 
@@ -341,12 +343,74 @@ href="https://www.google.com/maps/dir/玉前神社/天津神明宮/誕生寺/鴨
 
 
 
+
+
+
+<!-- メッセージ -->
+
+<div class="page" id="p5">
+
+<div class="card">
+
+
+<h3>最後のページ</h3>
+
+<p>
+このページには<br>
+瑛ちゃんからママへのメッセージがあります。<br><br>
+
+パスワードを入力してください
+</p>
+
+<input type="password" id="pass" placeholder="パスワード">
+
+<br><br>
+
+<button onclick="checkPass()">開く</button>
+
+<p id="error" style="color:red;"></p>
+
+</div>
+
+</div>
+
+
+
+<div class="card" id="secret" style="display:none">
+
+<h3>ママへ</h3>
+
+<p>
+いつもありがとう。
+
+なかなか二人だけで旅行する
+機会もなかったけど、
+
+こうして一緒に
+誕生日旅行に行けることを
+嬉しく思っています。
+
+この旅が
+楽しい思い出になれば
+嬉しいです。
+
+瑛成
+</p>
+
+</div>
+
+
+
+
+
 <div class="nav">
 
 <button onclick="go(1)">🏠<span>表紙</span></button>
 <button onclick="go(2)">📅<span>日程</span></button>
 <button onclick="go(3)">⛩<span>神社</span></button>
 <button onclick="go(4)">🗺<span>MAP</span></button>
+<button onclick="go(5)">💌<span>最後に</span></button>
+
 
 </div>
 
@@ -378,10 +442,23 @@ document.addEventListener("touchend",e=>{
 
 let endX=e.changedTouches[0].clientX
 
-if(startX-endX>80 && current<4)go(current+1)
+if(startX-endX>80 && current<5)go(current+1)
 if(endX-startX>80 && current>1)go(current-1)
 
 })
+
+function checkPass(){
+
+let pass=document.getElementById("pass").value
+
+if(pass==="0315"){
+document.getElementById("secret").style.display="block"
+document.getElementById("error").innerText=""
+}else{
+document.getElementById("error").innerText="パスワードが違います"
+}
+
+}
 
 </script>
 
