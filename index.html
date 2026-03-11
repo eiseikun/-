@@ -18,7 +18,6 @@ color:#333;
 
 .page{
 display:none;
-padding:24px;
 max-width:520px;
 margin:auto;
 animation:fade .4s;
@@ -107,7 +106,7 @@ cursor:pointer;
 .map iframe{
 border-radius:16px;
 width:100%;
-height:420px;
+height:50vh;
 border:none;
 }
 
@@ -123,6 +122,9 @@ justify-content:center;
 flex-direction:column;
 text-align:center;
 overflow:hidden;
+max-width:420px;
+margin:20px auto;
+padding:0 16px; 
 }
 
 .hero::before{
@@ -585,18 +587,22 @@ href="https://www.google.com/maps/dir/玉前神社/天津神明宮/誕生寺/鴨
 
 <h3>ママへ</h3>
 <p class="message">
-メッセージ作成中<br>
+改めて、お誕生日おめでとう🎊<br>
+そして、瑛ちゃんを産んでくれて本当にありがとう！<br>
+いつも美味しいお弁当🍱やデザート🍰を作ってくれたり、瑛ちゃんのことをたくさん支えてくれて、本当に感謝しています。<br><br>
 
-考え中…<br>
+今回は、親子二人だけでの初めての泊まり旅行でしたが、どうでしたか？<br>
+瑛ちゃんは普段なかなか出来ないことだから、こうして一緒に来られて本当に良かったです。<br>
+この旅行がママにとっても楽しい思い出になっていたら嬉しいです。<br>
+これからも元気で、可愛くて優しいママでいてね。<br>
+そして、いつも瑛ちゃんのことを想ってくれてありがとう。<br>
+これからも、たくさん一緒に笑って、楽しい時間を過ごそうね🥰<br><br>
 
-。。。<br>
-
-瑛成
+瑛成より
 </p>
 </div>
 
 </div>
-
 
 
 <div class="nav">
@@ -632,20 +638,28 @@ function go(n){
   current = n
 }
 
-let startX
+let startX = 0, startY = 0;
 
-document.addEventListener("touchstart",e=>{
-startX=e.touches[0].clientX
-})
+document.addEventListener("touchstart", e => {
+  startX = e.touches[0].clientX;
+  startY = e.touches[0].clientY; 
+});
 
-document.addEventListener("touchend",e=>{
+document.addEventListener("touchend", e => {
+  let endX = e.changedTouches[0].clientX;
+  let endY = e.changedTouches[0].clientY;
 
-let endX=e.changedTouches[0].clientX
+  let deltaX = endX - startX;
+  let deltaY = endY - startY;
 
-if(startX-endX>80 && current<5)go(current+1)
-if(endX-startX>80 && current>1)go(current-1)
+  if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > 80) {
+    if (deltaX < 0 && current < 5) go(current + 1);
+    if (deltaX > 0 && current > 1) go(current - 1); 
+  }
+});
 
-})
+
+
 
 function checkPass(){
 
@@ -709,5 +723,4 @@ document.querySelector(".map iframe").src =
 
 </body>
 </html>
-
 
