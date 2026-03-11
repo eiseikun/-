@@ -6,6 +6,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>親子誕生日1泊2日 房総御朱印めぐりの旅</title>
+  
+<link rel="apple-touch-icon" href="icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
 
 <style>
 
@@ -249,7 +252,8 @@ color:#2b77d1;
 }
 
 .mapButtons button:active{
-transform:scale(0.92);
+transform:scale(0.9);
+box-shadow:0 2px 6px rgba(0,0,0,0.2);
 }
 
 /* ママへのメッセージ文字サイズ */
@@ -615,12 +619,11 @@ href="https://www.google.com/maps/dir/玉前神社/天津神明宮/誕生寺/鴨
 
 <div class="nav">
 
-<button onclick="go(1)">🏠<span>表紙</span></button>
+<button class="active" onclick="go(1)">🏠<span>表紙</span></button>
 <button onclick="go(2)">📅<span>日程</span></button>
 <button onclick="go(3)">⛩<span>神社</span></button>
 <button onclick="go(4)">🗺<span>MAP</span></button>
 <button onclick="go(5)">💌<span>最後に</span></button>
-
 
 </div>
 
@@ -727,9 +730,10 @@ let tripDate = new Date("2026-03-15")
 let today = new Date()
 let diff = tripDate - today
 let days = Math.ceil(diff / (1000 * 60 * 60 * 24))
+let hours = Math.floor((diff / (1000*60*60)) % 24)
 let text = ""
 if(days > 0){
-text = "旅行まであと " + days + " 日 ✈️"
+text = "旅行まであと " + days + "日 " + hours + "時間 ✈️"
 }else if(days === 0){
 text = "✨今日は旅行の日✨"
 }else{
@@ -747,6 +751,7 @@ updateCountdown()
 
 </body>
 </html>
+
 
 
 
