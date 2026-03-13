@@ -18,7 +18,7 @@ html, body {
   background:#eef4fb;
   color:#333;
   overscroll-behavior: none;
-  -webkit-overflow-scrolling:
+  -webkit-overflow-scrolling: touch;
   touch-action: manipulation;
   height: 100%;
 }
@@ -834,7 +834,7 @@ loadChecks()
 /* 最後のページを旅行当日19時まで非表示 */
 
 function controlSecretPage(){
-let tripDate = new Date("2026-03-13T11:15:00")/* とりあいず今日の11:15 */
+let tripDate = new Date("2026-03-13T14:00:00")/* 14時 */
 let now = new Date()
 if(now < tripDate){
 document.getElementById("secretNav").style.display="none"
@@ -847,7 +847,7 @@ controlSecretPage()
 /* メッセージ解禁通知 */
 
 function messageNotification(){
-let unlock = new Date("2026-03-13T11:15:00")/* とりあいず今日の11:15 */
+let unlock = new Date("2026-03-13T14:00:00")/* 14時 */
 let now = new Date()
 if(now >= unlock){
 let btn = document.getElementById("secretNav")
